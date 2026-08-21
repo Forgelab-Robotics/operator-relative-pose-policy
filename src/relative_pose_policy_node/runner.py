@@ -7,8 +7,10 @@ import uuid
 from collections.abc import Callable, Iterable
 from typing import Any
 
-from forge_msgs import JointState, ToolMessage
+from forge_msgs import JointState
+
 from forge_tool import ToolEndpointHandler, ToolEnvelope
+from forge_tool._tool_message import ToolMessage
 from forge_tool.dora import (
     DoraToolEndpointBinding,
     tool_envelope_to_message,

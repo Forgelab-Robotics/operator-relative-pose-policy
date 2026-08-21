@@ -24,7 +24,7 @@ boundary.
 
 ## Install and run
 
-The project resolves Forge packages from the sibling `/home/mrgh/code/forge` checkout:
+Forge packages resolve from public package indexes (`forge-msgs==1.0.1`, `forge-kinematics==1.0.1`); the Forge Tool protocol is vendored under `src/forge_tool`:
 
 ```bash
 uv sync
@@ -61,5 +61,26 @@ The runner composes `RelativePoseQueryEndpoint`, `RelativePoseResolver`, Forge's
 endpoint-level `EndpointLease` registers and renews the descriptor. See
 [TOOL_CONTRACTS.md](TOOL_CONTRACTS.md) for the strict request and result contract.
 
-The cross-repository fake, MuJoCo, and Agilex Piper integration graphs live in the
-[move-arm-by-end-effector example](../../forge_runtime/examples/move_arm_by_ee_skill/README.md).
+The PAOS-owned MuJoCo integration graph lives in the `move-arm-by-ee` Skill of the
+PhyAgentOS skill collection.
+
+
+## Development
+
+Use Python 3.12 and `uv`:
+
+```bash
+uv sync --frozen --all-groups
+uv run pytest -q
+```
+
+The vendored `forge-tool` protocol under `src/forge_tool` is resolved
+automatically; see `THIRD_PARTY_NOTICES.md` for its provenance. The optional
+standalone executable can be built with `scripts/build_pyinstaller.sh`.
+
+## License
+
+[Apache License 2.0](LICENSE). Runtime dependencies are not distributed with
+this source repository and retain their respective licenses; see
+[NOTICE](NOTICE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Review the complete bundled artifact before publishing standalone executables.

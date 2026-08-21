@@ -48,6 +48,6 @@ from the monotonic time at which this policy receives/processes the state. Query
 atomic with a later Action: orchestration must provide any required stationary window and snapshot
 version guard.
 
-See the relocated
-[multi-environment integration example](../../forge_runtime/examples/move_arm_by_ee_skill/README.md)
-for the logical-only, fake, MuJoCo, and real-robot dataflows.
+See the PAOS-owned
+[`move-arm-by-ee` Skill](../../PhyAgentOS/PhyAgentOS/skills/forge-skill/move-arm-by-ee/)
+for the current MuJoCo dataflow and Tool configuration.

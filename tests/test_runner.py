@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import asyncio
 
-from forge_msgs import JointState, ToolMessage
+from forge_msgs import JointState
+
 from forge_tool import (
     EndpointRegistryResponse,
     ToolContext,
@@ -14,12 +15,12 @@ from forge_tool import (
     make_invoke_request_envelope,
     validate_registration_envelope,
 )
+from forge_tool._tool_message import ToolMessage
 from forge_tool.dora import (
     DoraToolEndpointBinding,
     tool_envelope_to_message,
     tool_message_to_envelope,
 )
-
 from relative_pose_policy_node.endpoint_lease import EndpointLease
 from relative_pose_policy_node.query import RELATIVE_DESCRIPTOR, RelativePoseQueryEndpoint
 from relative_pose_policy_node.resolver import RelativePoseResolver

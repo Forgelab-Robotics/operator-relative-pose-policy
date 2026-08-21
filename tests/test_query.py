@@ -6,8 +6,8 @@ import math
 import numpy as np
 import pytest
 from forge_msgs import JointState
-from forge_tool import ToolContext, ToolEndpointError, ToolExecutionKey, ToolRequest
 
+from forge_tool import ToolContext, ToolEndpointError, ToolExecutionKey, ToolRequest
 from relative_pose_policy_node.query import (
     RELATIVE_DESCRIPTOR,
     RelativePoseQuery,

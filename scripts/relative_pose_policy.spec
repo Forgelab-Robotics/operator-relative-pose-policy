@@ -1,5 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""Build both deployment executables from one isolated environment."""
+"""Build the relative-pose Policy Node executable."""
 
 from pathlib import Path
 import site
@@ -9,9 +9,6 @@ from PyInstaller.utils.hooks import collect_all
 
 PROJECT_DIR = Path(SPEC).resolve().parent.parent
 SRC_DIR = PROJECT_DIR / "src"
-CALLER_DIR = (
-    PROJECT_DIR.parents[1] / "forge_runtime" / "examples" / "move_arm_by_ee_skill"
-)
 
 
 def collect_runtime():
@@ -83,25 +80,6 @@ policy_exe = EXE(
     policy.datas,
     [],
     name="relative_pose_policy",
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=False,
-    console=True,
-)
-
-caller = analysis(
-    PROJECT_DIR / "scripts" / "move_arm_by_ee_skill_caller_entry.py",
-    extra_paths=(CALLER_DIR,),
-)
-caller_pyz = PYZ(caller.pure)
-caller_exe = EXE(
-    caller_pyz,
-    caller.scripts,
-    caller.binaries,
-    caller.datas,
-    [],
-    name="move_arm_by_ee_skill_caller",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
