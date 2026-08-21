@@ -72,7 +72,7 @@ jobs:
           test "$(tar -tzf "${archive}")" = "relative_pose_policy"
           sha256sum --check "${archive}.sha256"
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: relative-pose-policy-v${{ inputs.version }}-ubuntu20.04-x86_64
           path: |
