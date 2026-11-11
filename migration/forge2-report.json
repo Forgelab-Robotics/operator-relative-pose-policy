@@ -1,7 +1,6 @@
 {
   "repository": "operator-relative-pose-policy",
   "node_candidate_version": "2.0.0",
-  "baseline_commit": "035b12c9a970146fa8c92586a27c68a3e580a660",
   "changes": [
     "Upgrade Kinematics and Tool bindings; remove vendored protocol and private imports.",
     "Synchronize English/Chinese root README guidance and frozen dependencies."
