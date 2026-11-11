@@ -39,13 +39,13 @@ Forge Query Tool Wire
 完整参数、返回值、frame/单位、状态新鲜度及错误见 [TOOL_CONTRACTS.md](TOOL_CONTRACTS.md)，
 实现见 [query.py](src/relative_pose_policy_node/query.py)。
 
-兼容性：当前依赖声明为 `dora-rs==0.4.1`、`forge-kinematics==1.0.1`、`forge-msgs==1.0.1`；以 [pyproject.toml](pyproject.toml) 与 [uv.lock](uv.lock) 为准。 Tool 协议实现为仓库内 vendored 代码。 这些声明不构成跨版本互操作保证；使用制品时还需核对 build revision 和 Skill lock。
+兼容性：当前依赖声明为 `dora-rs>=1.0.1,<2`、`forge-kinematics>=2.0.0,<3`、`forge-msgs>=2.0.0,<3`；以 [pyproject.toml](pyproject.toml) 与 [uv.lock](uv.lock) 为准。 Tool 协议实现来自正式 `forge-tool[dora]` 分发包。 这些声明不构成跨版本互操作保证；使用制品时还需核对 build revision 和 Skill lock。
 
 后续修改 Node 入口、Endpoint 或 Tool API 时，请同步更新本节及对应配置/契约，遵循 [Node README 规范](https://github.com/PhyAgentOS/forge/blob/master/CONTRIBUTING.md#node-readme-contract)。
 
 ## 安装与运行
 
-Forge 包从公共索引解析（`forge-msgs==1.0.1`、`forge-kinematics==1.0.1`），Tool 协议内置于 `src/forge_tool`：
+Forge 包从公共索引解析（`forge-msgs>=2.0.0,<3`、`forge-kinematics>=2.0.0,<3`），Tool 协议内置于 `src/forge_tool`：
 
 ```bash
 uv sync
@@ -120,3 +120,9 @@ uv run pytest -q
 本仓库使用 [Apache License 2.0](LICENSE)。运行时依赖不随源码仓库分发，
 保留各自许可证，详见 [NOTICE](NOTICE) 与 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 发布独立可执行文件前审查完整打包制品。
+
+## Forge 2.x 迁移
+
+本分支准备节点版本 `2.0.0`，适配 Dora 1.x，迁移验证锁定 Dora `1.0.1`。使用正式 Forge 2.x 分发包；Common 至少为 `2.1.0`。此次更新包括依赖锁文件与各独立可执行入口。
+
+每轮报告必须列出仓库、改动和测试证据，包括各节点的 `dora run` 记录，以及包含 `adapter-forge-gateway` 的串联测试。缺少硬件或模型的验收项保持待验证。源码 PR 不等于正式发布；整体验收通过后再同步 GitLab。

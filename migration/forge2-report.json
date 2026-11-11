@@ -1,0 +1,79 @@
+{
+  "repository": "operator-relative-pose-policy",
+  "node_candidate_version": "2.0.0",
+  "baseline_commit": "035b12c9a970146fa8c92586a27c68a3e580a660",
+  "changes": [
+    "Upgrade Kinematics and Tool bindings; remove vendored protocol and private imports.",
+    "Synchronize English/Chinese root README guidance and frozen dependencies."
+  ],
+  "software_tests": {
+    "log": "tests.log",
+    "summary": [
+      "47 passed, 1 skipped in 0.06s"
+    ]
+  },
+  "dora_cli": "1.0.1",
+  "runtime_records": [
+    {
+      "repo": "operator-relative-pose-policy",
+      "entry": "relative-pose-policy",
+      "mode": "single",
+      "command": [
+        "${WORKSPACE}/.test-env/bin/dora",
+        "run",
+        "${WORKSPACE}/validation/forge2/runtime/relative-pose-policy/single/dataflow.yaml",
+        "--stop-after",
+        "6s"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.113,
+      "passed": true,
+      "error": null,
+      "scope": "Startup, timer processing and normal Dora stop only; no hardware or action execution."
+    },
+    {
+      "repo": "operator-relative-pose-policy",
+      "entry": "relative-pose-policy",
+      "command": [
+        "${WORKSPACE}/.test-env/bin/dora",
+        "run",
+        "${WORKSPACE}/validation/forge2/runtime/relative-pose-policy/chain/dataflow.yaml",
+        "--stop-after",
+        "10s"
+      ],
+      "includes_gateway": true,
+      "passed": true,
+      "scope": "Real Tool provider registration and registry response over Dora; HTTP discovery confirms the endpoint. No hardware/action execution.",
+      "discovery": {
+        "ok": true,
+        "data": {
+          "revision": 1,
+          "tools": [
+            {
+              "endpoint_id": "motion.relative_pose",
+              "descriptor": {
+                "protocol_version": "forge.tool.endpoint/v1alpha1",
+                "endpoint_id": "motion.relative_pose",
+                "operations": [
+                  {
+                    "name": "resolve",
+                    "semantics": "query",
+                    "cancellable": false,
+                    "stoppable": false,
+                    "status_supported": false,
+                    "max_concurrency": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "exit_code": 0
+    }
+  ],
+  "runtime_missing": null,
+  "acceptance": "Pending final platform artifacts, applicable hardware/model execution and rollback/sustained-run gates.",
+  "pillow_dependency": "Node locks currently resolve published Forge Msgs 2.0.0. Security audit remains dependent on Forge PR #3 and a published security-fixed Msgs release; no vulnerability suppression was added.",
+  "gitlab_synchronization": "Not started; follows full acceptance."
+}
