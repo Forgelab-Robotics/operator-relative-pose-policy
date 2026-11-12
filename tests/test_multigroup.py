@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 from forge_msgs import JointState, Pose
-
 from forge_tool import ToolContext, ToolEndpointError, ToolExecutionKey, ToolRequest
+
 from relative_pose_policy_node.config import (
     MultiGroupRelativePosePolicyConfig,
     RelativePosePolicyConfig,

@@ -6,7 +6,6 @@ from collections.abc import Callable, Mapping
 from typing import Any, cast
 
 from forge_msgs import JointState, Pose
-
 from forge_tool import (
     TOOL_ENDPOINT_PROTOCOL,
     ToolContext,
